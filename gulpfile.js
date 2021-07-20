@@ -129,7 +129,6 @@ const copy = () => {
     }
   )
     .pipe(gulp.dest('dist'))
-    .pipe(browserSync.stream());
 };
 
 exports.copy = copy;
