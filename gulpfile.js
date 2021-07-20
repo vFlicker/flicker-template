@@ -58,15 +58,15 @@ const scripts = () => {
 
 exports.scripts = scripts;
 
-const vendors = () => {
+const vendor = () => {
   return gulp
-    .src('src/scripts/vendors/**/*.js')
-    .pipe(concat('vendors.min.js'))
+    .src('src/scripts/vendor/**/*.js')
+    .pipe(concat('vendor.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist/js'))
 };
 
-exports.vendors = vendors;
+exports.vendor = vendor;
 
 const images = () => {
   return gulp.src(['src/images/**/*.{png,jpg,svg}', '!src/images/sprite-icons/*.svg'])
@@ -169,7 +169,7 @@ exports.default = gulp.series(
     html,
     styles,
     scripts,
-    vendors,
+    vendor,
     images,
     createWebp,
     sprite,
