@@ -1,0 +1,26 @@
+// ---
+
+// При разработке нового проекта:
+//   1) написать константы для цветов и шрифтов в variables.scss;
+//   2) подключить шрифты в fonts.scss;
+//   3) написать стили для html, body, main в reboot.scss;
+//   4) написать стили для .wrapper в utils.scss
+//   5) написать стили для .container в container.scss;
+
+// Для написания медиа-выражений нужно использовать mixin
+// с именем переменной нужного разрешения.
+//
+// Пример:
+// @include viewport--xl { стили }
+
+// Файлы из vendor лучше подключать в конце чтобы сборка работала быстрее
+
+// ---
+
+// @import "./vendor/index.scss";
+
+@import "./variables.scss";
+@import "./keyframes.scss";
+@import "./mixins.scss";
+
+@import "./global/index.scss";

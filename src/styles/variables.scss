@@ -1,0 +1,15 @@
+$color-light-black:               #343434;
+$color-yellow-white:              #fcfbf9;
+
+$font-family--roboto:             Roboto, Arial, sans-serif;
+
+$viewport--sm:                    320px;
+$viewport--md:                    768px;
+$viewport--lg:                    1024px;
+$viewport--xl:                    1280px;
+$viewport--xxl:                   1920px;
+
+:root {
+  --bg-color: #{$color-yellow-white};
+  --text-color: #{$color-light-black};
+}
