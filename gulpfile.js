@@ -58,7 +58,7 @@ const scripts = () => {
     .pipe(buffer())
     .pipe(babel({
       presets: ['@babel/preset-env'],
-  }))
+    }))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(rename("main.min.js"))
@@ -156,7 +156,7 @@ const reload = (done) => {
 const watcher = () => {
   gulp.watch('src/*.html', gulp.series(html, reload));
   gulp.watch('src/styles/**/*.scss', gulp.series(styles));
-  gulp.watch('src/scripts/*.js', gulp.series(scripts));
+  gulp.watch('src/scripts/**/*.js', gulp.series(scripts));
 };
 
 exports.watcher = watcher;
