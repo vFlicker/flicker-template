@@ -16,3 +16,15 @@
     margin-right: 0;
   }
 }
+
+.user-list__button {
+  color: $color-black;
+
+  @include viewport--md {
+    display: block;
+    padding: 20px 0;
+    font-size: 24px;
+  }
+}
+
+
