@@ -1,19 +1,23 @@
 const autoprefixer = require('autoprefixer'); // автопрефиксер
 const browserSync = require('browser-sync').create(); // обновление браузера
+const cssnano = require('cssnano'); // минифицирует CSS
 const del = require('del'); // удаляет файлы
 const gulp = require('gulp'); // сам GULP
+const babel = require('gulp-babel'); // транспортер JavaScript
 const concat = require('gulp-concat'); // объединяет файлы
-const cssnano = require('cssnano'); // минифицирует CSS
 const htmlmin = require('gulp-htmlmin'); // минифицирует HTML
 const imagemin = require('gulp-imagemin'); // сжимает картинки
 const postcss = require('gulp-postcss'); // плагин postcss
 const rename = require('gulp-rename'); // переименует файлы
-const sass = require('gulp-sass')(require('sass'));; // конвертиртирует sass в css
+const sass = require('gulp-sass')(require('sass')); // конвертиртирует sass в css
 const sourcemaps = require('gulp-sourcemaps'); // создаёт sourcemaps
 const svgstore = require('gulp-svgstore'); // создаёт спрайт svg
 const uglify = require('gulp-uglify'); // минифицирует JS
 const webp = require('gulp-webp'); // конвертиртирует PNG, JPEG в WebP
 const webphtml = require('gulp-webp-html'); // заменяет в HTML картинки на WebP
+const rollup = require('rollup-stream'); // сборщик модулей JavaScript
+const source = require('vinyl-source-stream'); // для работы с файловой системой
+const buffer = require('vinyl-buffer'); // для работы с файловой системой
 
 const html = () => {
   return gulp.src('src/*.html')
@@ -46,13 +50,20 @@ const styles = () => {
 exports.styles = styles;
 
 const scripts = () => {
-  return gulp.src('src/scripts/script.js')
-    .pipe(sourcemaps.init())
+  return rollup({
+    input: './src/scripts/script.js',
+    format: 'iife',
+  })
+    .pipe(source('main.js'))
+    .pipe(buffer())
+    .pipe(babel({
+      presets: ['@babel/preset-env'],
+  }))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
-    .pipe(rename("script.min.js"))
+    .pipe(rename("main.min.js"))
     .pipe(sourcemaps.write('.'))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('./dist/js'))
     .pipe(browserSync.stream());
 };
 
