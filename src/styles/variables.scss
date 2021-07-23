@@ -1,15 +1,14 @@
+$color-black:                     #000000;
 $color-light-black:               #343434;
+$color-gray:                      #ebebeb;
 $color-yellow-white:              #fcfbf9;
+$color-blue-1:                    #1a73e8;
+$color-blue-2:                    #2980b9;
+$color-transparent:               rgba(255, 255, 255, 0);
 
 $font-family--roboto:             Roboto, Arial, sans-serif;
 
-$viewport--sm:                    320px;
-$viewport--md:                    768px;
-$viewport--lg:                    1024px;
-$viewport--xl:                    1280px;
-$viewport--xxl:                   1920px;
-
-:root {
-  --bg-color: #{$color-yellow-white};
-  --text-color: #{$color-light-black};
-}
+$viewport--sm:                    575px;
+$viewport--md:                    767px;
+$viewport--lg:                    991px;
+$viewport--xl:                    1199px;

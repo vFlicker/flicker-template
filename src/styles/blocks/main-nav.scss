@@ -1,0 +1,105 @@
+.main-nav {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @include viewport--md {
+    flex-wrap: wrap;
+  }
+}
+
+.main-nav__toggle {
+  display: none;
+
+  @include viewport--md {
+    @include reset-btn;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 30px;
+    height: 30px;
+
+    margin: -10px -10px 0 0;
+    padding: 10px 10px;
+
+    box-sizing: content-box;
+    user-select: none;
+  }
+}
+
+.main-nav__toggle > span {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 2px;
+  vertical-align: bottom;
+  background-color: $color-light-black;
+  transition: transform 0.3s ease;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: $color-light-black;
+  }
+
+  &::before {
+    top: 8px;
+  }
+
+  &::after {
+    top: -8px;
+  }
+
+  .main-nav--open & {
+    background-color: initial;
+
+    &::before,
+    &::after {
+      top: 0;
+    }
+
+    &::before {
+      transform: rotate3d(0,0,1,45deg);
+    }
+
+    &::after {
+      transform: rotate3d(0,0,1,-45deg);
+    }
+  }
+}
+
+.main-nav__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @include viewport--md {
+    flex-direction: column;
+  }
+}
+
+.main-nav__list {
+  @include reset-list;
+
+  @include viewport--md {
+    flex-basis: 100%;
+
+    .main-nav & {
+      display: none;
+    }
+
+    .main-nav--open & {
+      display: block;
+    }
+  }
+}

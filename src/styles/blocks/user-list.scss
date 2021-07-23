@@ -1,0 +1,18 @@
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+
+  @include viewport--md {
+    flex-direction: column;
+  }
+}
+
+.user-list__item {
+  margin-right: 30px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
