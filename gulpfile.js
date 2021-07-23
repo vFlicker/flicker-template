@@ -53,9 +53,11 @@ const scripts = () => {
   return rollup({
     input: './src/scripts/script.js',
     format: 'iife',
+    sourcemap: true
   })
     .pipe(source('main.js'))
     .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(babel({
       presets: ['@babel/preset-env'],
     }))
