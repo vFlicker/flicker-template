@@ -12,7 +12,7 @@ body {
 
 html {
   font-size: 16px;
-  line-height: 24px;
+  line-height: 22px;
 
   @include viewport--sm {
     font-size: 14px;
@@ -22,19 +22,19 @@ html {
 
 body {
   width: 100%;
-  min-width: $viewport--sm;
+  min-width: 320px;
   height: 100%;
 
   font-style: normal;
   font-weight: 400;
   font-family: $font-family--roboto;
 
-  color: var(--text-color);
+  color: $color-light-black;
 }
 
 main {
   padding: 100px 0;
-  background-color: var(--bg-color);
+  background-color: $color-yellow-white;
 
   & > section:not(:last-child) {
     margin-bottom: 100px;
@@ -47,9 +47,9 @@ a {
 
 img,
 video {
-  display: block;
   max-width: 100%;
   height: auto;
+  vertical-align: middle;
 }
 
 textarea {

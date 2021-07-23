@@ -1,0 +1,22 @@
+.header {
+  border-bottom: 1px solid $color-gray;
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+
+  @include viewport--md {
+    flex-direction: column;
+    padding: 20px 30px;
+  }
+}
+
+.header__logo {
+  flex-shrink: 0;
+  margin-right: 170px;
+
+  @include viewport--md {
+    margin-right: auto;
+  }
+}

@@ -13,6 +13,39 @@
   <div class="wrapper">
     <header class="header">
       <div class="container  header__container">
+        <nav class="main-nav">
+          <a href="#" class="header__logo">
+            <img src="./img/logotype.png" width="92" height="30" alt="Google">
+          </a>
+
+          <button class="main-nav__toggle" type="button" aria-label="Переключатель отображения меню"><span></span></button>
+
+          <div class="main-nav__wrapper">
+            <ul class="main-nav__list  site-list">
+              <li class="site-list__item">
+                <a class="site-list__link  site-list__link--active">Главная</a>
+              </li>
+              <li class="site-list__item">
+                <a class="site-list__link" href="#">Новости</a>
+              </li>
+              <li class="site-list__item">
+                <a class="site-list__link" href="#">Сообщества</a>
+              </li>
+              <li class="site-list__item">
+                <a class="site-list__link" href="#">Видео</a>
+              </li>
+              <li class="site-list__item">
+                <a class="site-list__link" href="#">Музыка</a>
+              </li>
+            </ul>
+
+            <ul class="main-nav__list  site-list">
+              <li class="user-list__item">
+                <a href="#" class="button  user-list__button">Войти</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </header>
 
@@ -26,6 +59,6 @@
     </footer>
   </div>
 
-  <script src="js/script.min.js"></script>
+  <script type="module" src="js/script.min.js"></script>
 </body>
 </html>

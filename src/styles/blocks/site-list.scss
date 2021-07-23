@@ -1,0 +1,25 @@
+.site-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  @include viewport--md {
+    flex-direction: column;
+  }
+}
+
+.site-list__link {
+  display: block;
+  padding: 20px 16px;
+  color: $color-black;
+  transition: box-shadow 0.3s;
+
+    &--active {
+    box-shadow: inset 0 2px 0 $color-blue-2;
+    pointer-events: none;
+  }
+
+  &:hover {
+    box-shadow: inset 0 2px 0 $color-blue-2;
+  }
+}
