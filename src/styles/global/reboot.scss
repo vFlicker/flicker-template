@@ -39,6 +39,10 @@ main {
   & > section:not(:last-child) {
     margin-bottom: 100px;
   }
+
+  @include viewport--lg {
+    padding: 50px 0;
+  }
 }
 
 a {
