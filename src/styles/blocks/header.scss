@@ -16,9 +16,10 @@
   display: flex;
   align-items: center;
 
-  @include viewport--md {
+  @include viewport--lg {
     flex-direction: column;
-    padding: 20px 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 
@@ -26,7 +27,7 @@
   flex-shrink: 0;
   margin-right: 170px;
 
-  @include viewport--md {
+  @include viewport--lg {
     margin-right: auto;
   }
 }

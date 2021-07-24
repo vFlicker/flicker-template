@@ -1,5 +1,6 @@
 $color-black:                     #000000;
 $color-light-black:               #343434;
+$color-gray-dark:                 #e5ddd5;
 $color-gray:                      #ebebeb;
 $color-yellow-white:              #fcfbf9;
 $color-white:                     #ffffff;
@@ -9,7 +10,8 @@ $color-transparent:               rgba(255, 255, 255, 0);
 
 $font-family--roboto:             Roboto, Arial, sans-serif;
 
-$viewport--sm:                    575px;
-$viewport--md:                    767px;
-$viewport--lg:                    991px;
-$viewport--xl:                    1199px;
+$viewport--xsm:                   320px;
+$viewport--sm:                    576px;
+$viewport--md:                    768px;
+$viewport--lg:                    992px;
+$viewport--xl:                    1200px;

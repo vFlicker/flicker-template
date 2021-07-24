@@ -4,7 +4,7 @@
   justify-content: flex-end;
   align-items: center;
 
-  @include viewport--md {
+  @include viewport--lg {
     flex-direction: column;
   }
 }
@@ -20,7 +20,7 @@
 .user-list__button {
   color: $color-black;
 
-  @include viewport--md {
+  @include viewport--lg {
     display: block;
     padding: 20px 0;
     font-size: 24px;

@@ -6,7 +6,7 @@
   align-items: center;
   width: 100%;
 
-  @include viewport--md {
+  @include viewport--lg {
     flex-wrap: wrap;
   }
 }
@@ -14,7 +14,7 @@
 .main-nav__toggle {
   display: none;
 
-  @include viewport--md {
+  @include viewport--lg {
     @include reset-btn;
 
     display: flex;
@@ -87,8 +87,9 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  z-index: 10;
 
-  @include viewport--md {
+  @include viewport--lg {
     .main-nav--open & {
       position: fixed;
       top: 80px;
@@ -111,7 +112,7 @@
 .main-nav__list {
   @include reset-list;
 
-  @include viewport--md {
+  @include viewport--lg {
     flex-basis: 100%;
 
     .main-nav & {

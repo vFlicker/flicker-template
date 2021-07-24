@@ -7,7 +7,7 @@
 
   <title>Заголовок сайта</title>
 
-  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="stylesheet" href="./css/style.min.css">
 </head>
 <body>
   <div class="wrapper">
@@ -51,6 +51,53 @@
 
     <main class="main">
 
+      <section class="reviews">
+        <div class="container">
+          <h2 class="reviews__title">Отзывы о нас</h2>
+
+          <div class="reviews__wrapper  swiper">
+            <div class="reviews__content-wrapper">
+              <button class="reviews__prev  swiper__button  swiper__button--prev" type="button" aria-label="Предыдущий слайд"></button>
+              <button class="reviews__next  swiper__button  swiper__button--next" type="button" aria-label="Следующий слайд"></button>
+
+              <div class="reviews__content  swiper-container">
+                <ul class="reviews__list swiper-wrapper">
+                  <li class="reviews__item  swiper-slide">
+                    <div class="reviews__image-wrapper">
+                      <img src="./img/reviews/photo.jpg" width="249" height="160" class="reviews__image" alt="Фото Трэвиса Баркера">
+                    </div>
+                    <div class="reviews__author-info">
+                      <cite class="reviews__author-name">Трэвис Баркер</cite>
+                      <p class="reviews__description">[1] Спасибо за лысину! Был проездом в Москве, заскочил побриться, чтобы было видно новую татуировку!</p>
+                    </div>
+                  </li>
+                  <li class="reviews__item  swiper-slide">
+                    <div class="reviews__image-wrapper">
+                      <img src="./img/reviews/photo.jpg" width="249" height="160" class="reviews__image" alt="Фото Трэвиса Баркера">
+                    </div>
+                    <div class="reviews__author-info">
+                      <cite class="reviews__author-name">Трэвис Баркер</cite>
+                      <p class="reviews__description">[2] Спасибо за лысину! Был проездом в Москве, заскочил побриться, чтобы было видно новую татуировку!</p>
+                    </div>
+                  </li>
+                  <li class="reviews__item  swiper-slide">
+                    <div class="reviews__image-wrapper">
+                      <img src="./img/reviews/photo.jpg" width="249" height="160" class="reviews__image" alt="Фото Трэвиса Баркера">
+                    </div>
+                    <div class="reviews__author-info">
+                      <cite class="reviews__author-name">Трэвис Баркер</cite>
+                      <p class="reviews__description">[3] Спасибо за лысину! Был проездом в Москве, заскочил побриться, чтобы было видно новую татуировку!</p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="reviews__pagination swiper__pagination"></div>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="footer">
@@ -59,6 +106,7 @@
     </footer>
   </div>
 
-  <script src="js/main.min.js"></script>
+  <script src="./js/vendor.min.js"></script>
+  <script src="./js/main.min.js"></script>
 </body>
 </html>

@@ -1,0 +1,55 @@
+.swiper__button {
+  @include reset-btn;
+
+  position: relative;
+
+  width: 50px;
+  flex-shrink: 0;
+  border: 1px solid $color-gray-dark;
+
+  &::after {
+    content: '';
+
+    display: inline-block;
+    margin: auto;
+
+    border-style: solid;
+  }
+
+  &--prev {
+    &::after {
+      border-width: 6px 12px 6px 0;
+      border-color: transparent $color-black transparent transparent;
+    }
+  }
+
+  &--next {
+    order: 1;
+
+    &::after {
+      border-width: 6px 0 6px 12px;
+      border-color: transparent transparent transparent $color-black;
+    }
+  }
+
+  @include viewport--sm {
+    display: none;
+  }
+}
+
+.swiper__toggle {
+  width: 7px;
+  height: 7px;
+  margin-right: 22px;
+
+  border: 1px solid $color-light-black;
+  transform: rotate(45deg);
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &--active {
+    background-color: $color-light-black;
+  }
+}

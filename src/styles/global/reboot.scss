@@ -22,7 +22,7 @@ html {
 
 body {
   width: 100%;
-  min-width: 320px;
+  min-width: $viewport--xsm;
   height: 100%;
 
   font-style: normal;
@@ -43,6 +43,21 @@ main {
 
 a {
   text-decoration: none;
+}
+
+h2 {
+  font-size: 40px;
+  line-height: 30px;
+
+  @include viewport--lg {
+    font-size: 36px;
+    line-height: 36px;
+  }
+
+  @include viewport--sm {
+    font-size: 30px;
+    line-height: 30px;
+  }
 }
 
 img,
