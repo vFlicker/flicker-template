@@ -1,0 +1,23 @@
+.footer {
+  padding: 50px 0 54px;
+  color: $color-white;
+  background-color: $color-light-black;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+
+  @include viewport--lg {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.footer__contacts,
+.footer__social {
+  @include viewport--lg {
+    margin-bottom: 30px;
+  }
+}

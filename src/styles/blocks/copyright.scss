@@ -1,0 +1,19 @@
+.copyright__text {
+  display: block;
+  margin-bottom: 14px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.copyright__link {
+  display: block;
+  padding: 14px 28px;
+  border: 1px solid $color-lighter-black;
+  color: inherit;
+  font-weight: 700;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: $color-blue-1;
+  }
+}

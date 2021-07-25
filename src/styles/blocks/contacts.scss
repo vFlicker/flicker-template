@@ -1,0 +1,24 @@
+.contacts__title {
+  display: block;
+  margin: 0 0 14px 0;
+}
+
+.contacts__text {
+  margin: 0;
+}
+
+.contacts__phone {
+  color: inherit;
+
+  @include viewport--lg {
+    display: block;
+    margin-top: 16px;
+    padding: 12px 74px;
+    border: 1px solid $color-lighter-black;
+    font-weight: 700;
+
+    span {
+      display: none;
+    }
+  }
+}

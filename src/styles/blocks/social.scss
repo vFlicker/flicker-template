@@ -1,0 +1,37 @@
+.social__title {
+  display: block;
+  margin-bottom: 14px;
+  text-align: center;
+  font-weight: 400;
+}
+
+.social__list {
+  @include reset-list;
+
+  display: flex;
+}
+
+.social__link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 50px;
+  height: 50px;
+  border: 1px solid $color-lighter-black;
+
+  fill: $color-white;
+  transition: fill 0.3s ease;
+}
+
+.social__link--vkontakte:hover {
+  fill: $color-vkontakte;
+}
+
+.social__link--facebook:hover {
+  fill: $color-facebook;
+}
+
+.social__link--instagram:hover {
+  fill: $color-instagram;
+}

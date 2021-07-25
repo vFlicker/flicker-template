@@ -12,9 +12,9 @@
 <body>
   <div class="wrapper">
     <header class="header">
-      <div class="container  header__container">
+      <div class="header__container  container">
         <nav class="main-nav">
-          <a href="#" class="header__logo">
+          <a class="header__logo" href="#">
             <img src="./img/logotype.png" width="92" height="30" alt="Google">
           </a>
 
@@ -41,7 +41,7 @@
 
             <ul class="main-nav__list  user-list">
               <li class="user-list__item">
-                <a href="#" class="button  user-list__button">Войти</a>
+                <a class="button  user-list__button" href="#">Войти</a>
               </li>
             </ul>
           </div>
@@ -206,6 +206,38 @@
 
     <footer class="footer">
       <div class="footer__container  container">
+        <div class="footer__contacts  contacts">
+          <b class="contacts__title">Барбершоп &laquo;Бородинский&raquo;</b>
+          <p class="contacts__text">г. Санкт-Петербург, ул. Большая Конюшенная 19/8<br>
+            <a class="contacts__phone" href="tel:+78125556666">
+              <span>Тел.:</span> +7 (812) 555-66-66
+            </a>
+          </p>
+        </div>
+        <div class="footer__social  social">
+          <b class="social__title">Давай дружить!</b>
+          <ul class="social__list">
+            <li class="social__item">
+              <a class="social__link  social__link--vkontakte" href="#" aria-label="ВКонтакте" target="_blank">
+                <svg width="15" height="17"><use xlink:href="./img/sprite.svg#icon-vk"></use></svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="social__link  social__link--facebook" href="#" aria-label="Facebook" target="_blank">
+                <svg width="10" height="21"><use xlink:href="./img/sprite.svg#icon-fb"></use></svg>
+              </a>
+            </li>
+            <li class="social__item">
+              <a class="social__link  social__link--instagram" href="#" aria-label="Instagram" target="_blank">
+                <svg width="19" height="19"><use xlink:href="./img/sprite.svg#icon-instagram"></use></svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer__copyright  copyright">
+          <b class="copyright__text">Разработано:</b>
+          <a class="copyright__link" href="https://github.com/vFlicker">vFlicker</a>
+        </div>
       </div>
     </footer>
   </div>
