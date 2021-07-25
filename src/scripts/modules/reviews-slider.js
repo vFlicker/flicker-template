@@ -1,5 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-new */
 new Swiper('.swiper-container', {
-  allowTouchMove: true,
   loop: true,
   slidesPerView: 1,
 
@@ -12,6 +13,6 @@ new Swiper('.swiper-container', {
     el: '.swiper__pagination',
     type: 'bullets',
     bulletClass: 'swiper__toggle',
-    bulletActiveClass: 'swiper__toggle--active'
+    bulletActiveClass: 'swiper__toggle--active',
   },
 });

@@ -1,2 +1,2 @@
-import './modules/menu.js';
-import './modules/reviews-slider.js';
+import './modules/menu';
+import './modules/reviews-slider';
