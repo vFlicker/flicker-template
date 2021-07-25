@@ -1,0 +1,53 @@
+.section-article__title {
+  margin: 0 0 48px 0;
+}
+
+.article__title {
+  margin: 0;
+  color: #e07a5f;
+  text-transform: uppercase;
+  line-height: 1.2;
+  font-size: 28px;
+}
+
+.article {
+  column-count: 2;
+  column-gap: 50px;
+  column-rule: 1px solid #3d405b;
+  column-width: 315px;
+
+  color: #463f3a;
+}
+
+.applicants {
+  column-count: 2;
+  column-span: all;
+  column-width: 265px;
+
+  margin: 50px 0;
+  padding: 20px;
+
+  color: #f4f1de;
+
+  background: #3d405b;
+}
+
+.applicants__header {
+  column-span: all;
+
+  font-size: 28px;
+}
+
+.applicants__member {
+  break-inside: avoid;
+}
+
+.applicants__member-header {
+  margin: 0 0 20px 0;
+}
+
+.applicants__member-name {
+  margin: 20px 0 0;
+
+  font-weight: bold;
+}
