@@ -1,77 +1,69 @@
-const autoprefixer = require('autoprefixer'); // автопрефиксер
-const browserSync = require('browser-sync').create(); // обновление браузера
-const cssnano = require('cssnano'); // минифицирует CSS
-const del = require('del'); // удаляет файлы
-const gulp = require('gulp'); // сам GULP
-const babel = require('gulp-babel'); // транспортер JavaScript
-const concat = require('gulp-concat'); // объединяет файлы
-const htmlmin = require('gulp-htmlmin'); // минифицирует HTML
-const imagemin = require('gulp-imagemin'); // сжимает картинки
-const postcss = require('gulp-postcss'); // плагин postcss
-const rename = require('gulp-rename'); // переименует файлы
-const sass = require('gulp-sass')(require('sass')); // конвертиртирует sass в css
-const sourcemaps = require('gulp-sourcemaps'); // создаёт sourcemaps
-const svgstore = require('gulp-svgstore'); // создаёт спрайт svg
-const uglify = require('gulp-uglify'); // минифицирует JS
-const webp = require('gulp-webp'); // конвертиртирует PNG, JPEG в WebP
-const webphtml = require('gulp-webp-html'); // заменяет в HTML картинки на WebP
-const rollup = require('rollup-stream'); // сборщик модулей JavaScript
-const source = require('vinyl-source-stream'); // для работы с файловой системой
-const buffer = require('vinyl-buffer'); // для работы с файловой системой
+import autoprefixer from 'autoprefixer'; // autoprefixer
+import browserSync from 'browser-sync'; // refresh browser
+import cssnano from 'cssnano'; // minify CSS
+import del from 'del'; // delete files
+import gulp from 'gulp'; // GULP itself
+import babel from 'gulp-babel'; // JavaScript transporter
+import concat from 'gulp-concat'; // concatenate files
+import htmlmin from 'gulp-htmlmin'; // minify HTML
+import imagemin from 'gulp-imagemin'; // compresses pictures
+import postcss from 'gulp-postcss'; // postcss plugin
+import rename from 'gulp-rename'; // rename files
+import dartSass from 'sass'; // convert sass to css
+import gulpSass from 'gulp-sass'; // convert sass to css
+import sourcemaps from 'gulp-sourcemaps'; // creates sourcemaps
+import svgstore from 'gulp-svgstore'; // creates an svg sprite
+import uglify from 'gulp-uglify'; // minify JS
+import webp from 'gulp-webp'; // convert PNG, JPEG to WebP
+import webphtml from 'gulp-webp-html'; // replaces HTML images with WebP
+import rollup from 'rollup-stream'; // JavaScript module builder
+import source from 'vinyl-source-stream'; // to work with the file system
+import buffer from 'vinyl-buffer'; // to work with the file system
 
-const html = () => {
+const browserSyncInstance = browserSync.create();
+const sass = gulpSass(dartSass);
+
+export const html = () => {
   return gulp.src('src/*.html')
     .pipe(webphtml())
-    .pipe(htmlmin({
-      collapseWhitespace: true
-    }))
+    .pipe(htmlmin({ collapseWhitespace: true }))
     .pipe(gulp.dest('dist'))
 };
 
-exports.html = html;
-
-const styles = () => {
+export const styles = () => {
   return gulp.src('src/styles/style.scss')
     .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([
-      autoprefixer()
-    ]))
+    .pipe(postcss([autoprefixer()]))
     .pipe(gulp.dest('dist/css'))
-    .pipe(postcss([
-      cssnano()
-    ]))
+    .pipe(postcss([cssnano()]))
     .pipe(rename('style.min.css'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('dist/css'))
-    .pipe(browserSync.stream());
+    .pipe(browserSyncInstance.stream());
 };
 
-exports.styles = styles;
-
-const scripts = () => {
-  return rollup({
+export const scripts = () => {
+  const rollupConfig = {
     input: './src/scripts/script.js',
     format: 'iife',
     sourcemap: true
-  })
+  };
+
+  return rollup(rollupConfig)
     .pipe(source('main.js'))
     .pipe(buffer())
     .pipe(sourcemaps.init({loadMaps: true}))
-    .pipe(babel({
-      presets: ['@babel/preset-env'],
-    }))
+    .pipe(babel({ presets: ['@babel/preset-env'], }))
     .pipe(gulp.dest('dist/js'))
     .pipe(uglify())
     .pipe(rename("main.min.js"))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest('./dist/js'))
-    .pipe(browserSync.stream());
+    .pipe(browserSyncInstance.stream());
 };
 
-exports.scripts = scripts;
-
-const vendor = () => {
+export const vendor = () => {
   return gulp
     .src('src/scripts/vendor/**/*.js')
     .pipe(concat('vendor.min.js'))
@@ -79,104 +71,62 @@ const vendor = () => {
     .pipe(gulp.dest('dist/js'))
 };
 
-exports.vendor = vendor;
+export const images = () => {
+  const imageminConfig = [
+    imagemin.mozjpeg({ progressive: true }),
+    imagemin.optipng({ optimizationLevel: 3 }),
+    imagemin.svgo({ plugins: [{ removeViewBox: false }]}),
+  ];
 
-const images = () => {
   return gulp.src(['src/images/**/*.{png,jpg,svg}', '!src/images/sprite-icons/*.svg'])
-    .pipe(imagemin([
-      imagemin.mozjpeg({
-        progressive: true
-      }),
-      imagemin.optipng({
-        optimizationLevel: 3
-      }),
-      imagemin.svgo({
-        plugins: [{
-          removeViewBox: false
-        }]
-      }),
-    ]))
+    .pipe(imagemin(imageminConfig))
     .pipe(gulp.dest('dist/img'))
     .pipe(gulp.src('src/images/**/*.{jpg, png}'))
     .pipe(gulp.dest('dist/img'))
 };
 
-exports.images = images;
-
-const createWebp = () => {
+export const createWebp = () => {
   return gulp.src('src/images/**/*.{jpg,png}')
-    .pipe(webp({
-      quality: 90
-    }))
+    .pipe(webp({ quality: 90 }))
     .pipe(gulp.dest('dist/img'))
 };
 
-exports.createWebp = createWebp;
-
-const sprite = () => {
+export const sprite = () => {
   return gulp.src('src/images/sprite-icons/*.svg')
-    .pipe(imagemin([
-      imagemin.svgo({
-        plugins: [{
-          removeViewBox: false
-        }]
-      }),
-    ]))
-    .pipe(svgstore({
-      inlineSvg: true
-    }))
+    .pipe(imagemin([imagemin.svgo({ plugins: [{ removeViewBox: false }] })]))
+    .pipe(svgstore({ inlineSvg: true }))
     .pipe(rename('sprite.svg'))
     .pipe(gulp.dest('dist/img'));
 };
 
-exports.sprite = sprite;
-
-const copy = () => {
-  return gulp.src(
-    [
-      'src/fonts/*.{woff2,woff}',
-      'src/*.ico'
-    ],
-    {
-      base: "src"
-    }
-  )
+export const copy = () => {
+  return gulp.src(['src/fonts/*.{woff2,woff}', 'src/*.ico'], { base: "src" })
     .pipe(gulp.dest('dist'))
 };
 
-exports.copy = copy;
+export const clean = () => del('dist');
 
-const clean = () => {
-  return del('dist');
-};
-
-const reload = (done) => {
-  browserSync.reload();
+export const reload = (done) => {
+  browserSyncInstance.reload();
   done();
 };
 
-const watcher = () => {
+export const watcher = () => {
   gulp.watch('src/*.html', gulp.series(html, reload));
   gulp.watch('src/styles/**/*.scss', gulp.series(styles));
   gulp.watch('src/scripts/**/*.js', gulp.series(scripts));
 };
 
-exports.watcher = watcher;
-
-const server = () => {
-  browserSync.init({
+export const server = () => {
+  browserSyncInstance.init({
     cors: true,
     ui: false,
     notify: false,
-    server: {
-      baseDir: 'dist'
-    }
+    server: { baseDir: 'dist' }
   });
 };
 
-exports.server = server;
-
-exports.default = gulp.series(
+const build = gulp.series(
   clean,
   gulp.parallel(
     html,
@@ -193,3 +143,5 @@ exports.default = gulp.series(
     watcher,
   ),
 );
+
+export default build;

@@ -2,10 +2,11 @@
   "name": "starter-template",
   "private": true,
   "description": "Стартовый шаблон для вёрстки",
+  "type": "module",
   "scripts": {
     "eslint": "eslint --fix src/scripts/**/*.js",
     "test": "npm run eslint",
-    "build": "gulp build",
+    "build": "gulp bundle",
     "start": "gulp"
   },
   "devDependencies": {
